@@ -12,9 +12,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*l9(z*+pishzy_b(g^_en6jauh@0jof2fve0a^(+vnb%51a%*0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -139,15 +136,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'static/images/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Email-configurations
-EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND')
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  # Gmail SMTP port
 EMAIL_USE_TLS = True  # TLS (Transport Layer Security) is required by Gmail
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')  # Your Gmail address
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # Your Gmail password or app-specific password
+EMAIL_HOST_USER = 'teamsandboxshopping@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'rrsp ermo mdgl dcau'  # Your Gmail password or app-specific password
 
 # Optionally, specify a default 'From' address for outgoing emails
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+DEFAULT_FROM_EMAIL = 'teamsandboxshopping@gmail.com'
 
 #EXIPRATION TIME FOR THE PASSWORD RESET LINK
 PASSWORD_RESET_TIMEOUT = 300
