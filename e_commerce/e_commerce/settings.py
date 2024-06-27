@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -126,6 +127,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR / 'static/'),
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR / 'static/images/')
@@ -148,3 +151,6 @@ DEFAULT_FROM_EMAIL = 'teamsandboxshopping@gmail.com'
 
 #EXIPRATION TIME FOR THE PASSWORD RESET LINK
 PASSWORD_RESET_TIMEOUT = 300
+
+#activate django-heroku
+django_heroku.settings(locals())
