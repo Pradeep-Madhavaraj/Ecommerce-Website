@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    {% for product in page_obj %}
+    <div class="col-lg-4">
+        <img class="thumbnail" src="{{product.imageURL}}" >
+        <div class="box-element product">
+            <h6><strong name="{{product.name}}">{{product.name}}</strong></h6>
+            <hr>
+            {% if request.user.is_authenticated %}
+                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart btn-sm">Add to Cart</button>
+            {% else %}
+                <a class="btn btn-outline-secondary add-btn update-cart btn-sm" href="{% url 'loginpage' %}">Add to Cart</a>
+            {% endif %}
+			<a class="btn btn-outline-success btn-sm" href="{{product.image.url}}">View</a>
+			<h6 style="display: inline-block; float: right"><strong>Rs.{{product.price|floatformat:2}}</strong></h6>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+    <div class="pagination" style="text-align: center;">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" style="margin-right: 5px;">&laquo; First</a>
+                <a href="?page={{ page_obj.previous_page_number }}" style="margin-right: 5px;">Previous</a>
+            {% endif %}
+
+            <span class="current" style="margin-right: 5px;">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" style="margin-right: 5px;">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock content %}

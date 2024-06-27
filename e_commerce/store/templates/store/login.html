@@ -1,0 +1,90 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<style>
+    .container-login{
+        margin: 25px;
+    }
+    .btn-primary {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .btn-primary:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+    .links {
+      margin-top: 10px;
+    }
+</style>
+{% endblock style %}
+{% block content %}
+{% if page == 'login_page' %}
+<div class="container-login">
+    <div class="login-form">
+      <h2 class="login-name">Login</h2>
+      <hr>
+      <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="username">Username :</label>
+          <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password :</label>
+          <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <div class="links">
+        <small><a href="{% url 'password_reset' %}">Forgot Password?</a> | <a href="{% url 'resgisterpage' %}">Sign Up</a></small>
+      </div>
+    </div>
+</div>
+{% else %}
+<div class="container-login">
+    <div class="login-form">
+        <h2 class="login-name">Register</h2>
+        <hr>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                <input type="text" name="{{ form.username.name }}" class="form-control" placeholder="Enter your username" required>
+                {% if form.username.errors %}
+                <small class="text-danger">{{ form.username.errors }}</small>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                <input type="email" name="{{ form.email.name }}" class="form-control" placeholder="Enter your email" required>
+                {% if form.email.errors %}
+                <small class="text-danger">{{ form.email.errors }}</small>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password1.label_tag }}
+                <input type="password" name="{{ form.password1.name }}" class="form-control" placeholder="Enter your password" required>
+                {% if form.password1.errors %}
+                <small class="text-danger">{{ form.password1.errors }}</small>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password2.label_tag }}
+                <input type="password" name="{{ form.password2.name }}" class="form-control" placeholder="Re-enter your password" required>
+                {% if form.password2.errors %}
+                <small class="text-danger">{{ form.password2.errors }}</small>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <div class="links">
+          <small>Already has an account? <a href="{% url 'loginpage' %}">Login</a></small>
+        </div>
+    </div>
+</div>
+
+
+
+{% endif %}
+{% endblock content %}

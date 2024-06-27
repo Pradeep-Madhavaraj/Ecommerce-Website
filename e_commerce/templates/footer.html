@@ -1,0 +1,36 @@
+<!-- footer.html -->
+{% load static %}
+<footer class="site-footer text-white" style="background-color: #4f868c;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9" style="border-right: 2px solid #fff;">
+                <div class="row">
+                    <div class="col-md-9" style="margin-top: 10px;">
+                        <h3 style="color: #fff; text-decoration-line: underline; text-decoration-color: #fff;">Disclaimer</h3>
+                        <p style="font-size:small;">This website is a demonstration project created for educational purposes. It is not intended for production use. The products listed on this site are purely fictional and do not represent real items available for purchase. Any transactions or actions performed on this website are solely for demonstration purposes and no actual purchases can be made.</p>
+                        <br>
+                        <p style="font-size:small;">Please note that the functionalities provided, such as adding items to a cart, checking out, and making payments, are simulated and do not involve real monetary transactions. This website should be used cautiously and not as a real e-commerce platform.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="margin-top: 10px;">
+                <h3 style="color: #fff; text-decoration-line: underline; text-decoration-color: #fff;">Quick Links</h3>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'aboutpage' %}" class="text-white">About</a></li>
+                    <li><a href="{% url 'feedbackpage' %}" class="text-white">Feedback</a></li>
+                    <li><a href="{% url 'contactuspage' %}" class="text-white">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr style="background-color: #fff;">
+    </div>
+    <hr>
+    <center>
+    <div class="container">
+        <p>&copy; 2024 Sand-Box Shopping. All rights reserved.(DEMO)</p>
+    </div>
+    </center>
+</footer>
+
+
+
